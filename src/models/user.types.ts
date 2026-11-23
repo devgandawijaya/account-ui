@@ -20,7 +20,6 @@ export interface AdminUserItem {
   updatedAt: string | null;
   createdBy: string | null;
   updatedBy: string | null;
-  // Data Profil Personal
   profileId?: string;
   phoneNumber?: string | null;
   idCardNumber?: string | null;

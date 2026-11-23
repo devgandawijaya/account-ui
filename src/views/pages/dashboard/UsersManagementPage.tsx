@@ -110,8 +110,7 @@ export const UsersManagementPage: React.FC = () => {
 
   return (
     <div className="space-y-5">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
             Manajemen Pengguna
@@ -151,10 +150,8 @@ export const UsersManagementPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-        {/* Search Input with Instant & Manual Search */}
-        <div className="relative flex-1">
+            <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+                <div className="relative flex-1">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
@@ -177,10 +174,8 @@ export const UsersManagementPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Dropdown Filters */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Filter Jenis Kelamin */}
-          <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1">
+                <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1">
             <UserIcon className="w-3.5 h-3.5 text-slate-400" />
             <span>Kelamin:</span>
           </div>
@@ -194,8 +189,7 @@ export const UsersManagementPage: React.FC = () => {
             ))}
           </select>
 
-          {/* Filter Peran */}
-          <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1 ml-1">
+                    <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1 ml-1">
             <Shield className="w-3.5 h-3.5 text-slate-400" />
             <span>Peran:</span>
           </div>
@@ -209,8 +203,7 @@ export const UsersManagementPage: React.FC = () => {
             ))}
           </select>
 
-          {/* Filter Status */}
-          <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1 ml-1">
+                    <div className="flex items-center text-xs font-medium text-slate-500 gap-1.5 px-1 ml-1">
             <Filter className="w-3.5 h-3.5 text-slate-400" />
             <span>Status:</span>
           </div>
@@ -237,8 +230,7 @@ export const UsersManagementPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Users Management Table */}
-      <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden">
+            <div className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -293,8 +285,7 @@ export const UsersManagementPage: React.FC = () => {
                       key={user.id}
                       className="hover:bg-blue-50/30 transition-colors group"
                     >
-                      {/* Kolom 1: Nama & Email */}
-                      <td className="px-4 py-3.5">
+                                            <td className="px-4 py-3.5">
                         <div className="flex items-center gap-3">
                           <Avatar
                             name={user.fullName || user.email}
@@ -317,8 +308,7 @@ export const UsersManagementPage: React.FC = () => {
                         </div>
                       </td>
 
-                      {/* Kolom 2: Profil Personal (Jenis Kelamin & No. Telepon) */}
-                      <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <td className="px-4 py-3.5 whitespace-nowrap">
                         <div className="space-y-1">
                           <GenderBadge gender={user.gender} />
                           <div className="font-mono text-[11px] text-slate-700 flex items-center gap-1">
@@ -328,8 +318,7 @@ export const UsersManagementPage: React.FC = () => {
                         </div>
                       </td>
 
-                      {/* Kolom 3: Alamat Domisili */}
-                      <td className="px-4 py-3.5 max-w-[180px] truncate text-slate-600">
+                                            <td className="px-4 py-3.5 max-w-[180px] truncate text-slate-600">
                         {user.address ? (
                           <span title={user.address}>{user.address}</span>
                         ) : (
@@ -337,24 +326,21 @@ export const UsersManagementPage: React.FC = () => {
                         )}
                       </td>
 
-                      {/* Kolom 4: Peran & Status */}
-                      <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <td className="px-4 py-3.5 whitespace-nowrap">
                         <div className="flex flex-col items-start gap-1">
                           <RoleBadge role={user.role} />
                           <StatusBadge isActive={user.isActive} />
                         </div>
                       </td>
 
-                      {/* Kolom 5: Tanggal Dibuat (Created Date) */}
-                      <td className="px-4 py-3.5 font-mono text-[11px] text-slate-600 whitespace-nowrap">
+                                            <td className="px-4 py-3.5 font-mono text-[11px] text-slate-600 whitespace-nowrap">
                         <div>{formatDate(user.createdAt)}</div>
                         <div className="text-[10px] text-slate-400">
                           {formatDateTime(user.createdAt).split(', ')[1] || ''}
                         </div>
                       </td>
 
-                      {/* Kolom 6: Pembaruan Terakhir (Update Date) */}
-                      <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <td className="px-4 py-3.5 whitespace-nowrap">
                         {user.updatedAt ? (
                           <div>
                             <div className="font-mono text-xs text-blue-700 font-semibold flex items-center gap-1">
@@ -374,11 +360,9 @@ export const UsersManagementPage: React.FC = () => {
                         )}
                       </td>
 
-                      {/* Kolom 7: Aksi Manajemen */}
-                      <td className="px-4 py-3.5 text-right whitespace-nowrap">
+                                            <td className="px-4 py-3.5 text-right whitespace-nowrap">
                         <div className="flex items-center justify-end gap-1.5">
-                          {/* 1. Detail */}
-                          <Button
+                                                    <Button
                             variant="secondary"
                             size="sm"
                             onClick={() => openDetailModal(user)}
@@ -388,8 +372,7 @@ export const UsersManagementPage: React.FC = () => {
                             Detail
                           </Button>
 
-                          {/* 2. Ubah / Update */}
-                          <Button
+                                                    <Button
                             variant="secondary"
                             size="sm"
                             onClick={() => openEditModal(user)}
@@ -399,8 +382,7 @@ export const UsersManagementPage: React.FC = () => {
                             Ubah
                           </Button>
 
-                          {/* 3. Suspend / Aktifkan Toggle */}
-                          <Button
+                                                    <Button
                             variant={user.isActive ? 'secondary' : 'primary'}
                             size="sm"
                             onClick={() => handleToggleStatus(user)}
@@ -418,8 +400,7 @@ export const UsersManagementPage: React.FC = () => {
                             {user.isActive ? 'Suspend' : 'Aktifkan'}
                           </Button>
 
-                          {/* 4. Hapus / Delete */}
-                          <Button
+                                                    <Button
                             variant="danger"
                             size="sm"
                             onClick={() => openDeleteModal(user)}
@@ -439,8 +420,7 @@ export const UsersManagementPage: React.FC = () => {
           </table>
         </div>
 
-        {/* Pagination Bar */}
-        <Pagination
+                <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           totalItems={totalElements}
@@ -449,10 +429,7 @@ export const UsersManagementPage: React.FC = () => {
         />
       </div>
 
-      {/* ======================================================== */}
-      {/* MODAL 1: Detail Pengguna Lengkap                         */}
-      {/* ======================================================== */}
-      <Modal
+                        <Modal
         isOpen={isDetailModalOpen}
         onClose={closeDetailModal}
         title="Rincian Informasi Pengguna"
@@ -461,8 +438,7 @@ export const UsersManagementPage: React.FC = () => {
       >
         {selectedUser && (
           <div className="space-y-5">
-            {/* Header Profil */}
-            <div className="flex items-center gap-4 pb-4 border-b border-slate-100">
+                        <div className="flex items-center gap-4 pb-4 border-b border-slate-100">
               <Avatar
                 name={selectedUser.fullName || selectedUser.email}
                 avatarUrl={selectedUserProfile?.avatarUrl || selectedUser.avatarUrl || undefined}
@@ -485,8 +461,7 @@ export const UsersManagementPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Data Profil Personal */}
-            <div>
+                        <div>
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5 flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <UserIcon className="w-3.5 h-3.5 text-blue-600" />
@@ -560,8 +535,7 @@ export const UsersManagementPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Informasi Akun Sistem */}
-            <div>
+                        <div>
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                 <Shield className="w-3.5 h-3.5 text-blue-600" />
                 Data Akun Sistem & Audit
@@ -616,10 +590,7 @@ export const UsersManagementPage: React.FC = () => {
         )}
       </Modal>
 
-      {/* ======================================================== */}
-      {/* MODAL 2: Tambah Pengguna Baru (POST /api/v1/users)       */}
-      {/* ======================================================== */}
-      <Modal
+                        <Modal
         isOpen={isAddModalOpen}
         onClose={closeAddModal}
         title="Tambah Pengguna Baru"
@@ -710,10 +681,7 @@ export const UsersManagementPage: React.FC = () => {
         </form>
       </Modal>
 
-      {/* ======================================================== */}
-      {/* MODAL 3: Ubah Data Pengguna & Profil Personal            */}
-      {/* ======================================================== */}
-      <Modal
+                        <Modal
         isOpen={isEditModalOpen}
         onClose={closeEditModal}
         title="Ubah Data Pengguna & Profil Personal"
@@ -721,8 +689,7 @@ export const UsersManagementPage: React.FC = () => {
         maxWidth="lg"
       >
         <form onSubmit={handleUpdateUser} className="space-y-4">
-          {/* Status Tanggal Pembaruan (Update Date Status) */}
-          <div className="p-3 bg-blue-50/70 border border-blue-100 rounded-lg text-xs text-blue-900">
+                    <div className="p-3 bg-blue-50/70 border border-blue-100 rounded-lg text-xs text-blue-900">
             <div className="flex items-center justify-between">
               <span className="text-blue-700 font-semibold flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-blue-500" />
@@ -737,8 +704,7 @@ export const UsersManagementPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Bagian 1: Data Akun & Hak Akses */}
-          <div className="space-y-3 pt-1">
+                    <div className="space-y-3 pt-1">
             <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider pb-1.5 border-b border-slate-100 flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-blue-600" />
               1. Data Akun & Hak Akses
@@ -775,8 +741,7 @@ export const UsersManagementPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Bagian 2: Data Profil Personal */}
-          <div className="space-y-3 pt-2">
+                    <div className="space-y-3 pt-2">
             <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider pb-1.5 border-b border-slate-100 flex items-center gap-1.5">
               <UserIcon className="w-3.5 h-3.5 text-blue-600" />
               2. Data Profil Personal
@@ -879,10 +844,7 @@ export const UsersManagementPage: React.FC = () => {
         </form>
       </Modal>
 
-      {/* ======================================================== */}
-      {/* MODAL 4: Hapus Pengguna (DELETE /api/v1/users/{userId})  */}
-      {/* ======================================================== */}
-      <Modal
+                        <Modal
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         title="Konfirmasi Hapus Pengguna (Delete)"

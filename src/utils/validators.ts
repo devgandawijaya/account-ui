@@ -4,7 +4,7 @@ export function isValidEmail(email: string): boolean {
 }
 
 export function evaluatePasswordStrength(password: string): {
-  score: number; // 0 to 4
+  score: number;
   label: 'Sangat Lemah' | 'Lemah' | 'Cukup' | 'Kuat' | 'Sangat Kuat';
   color: string;
 } {

@@ -21,7 +21,6 @@ export function useProfileViewModel() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  // Change Password State
   const [passwordForm, setPasswordForm] = useState<ChangePasswordRequest>({
     oldPassword: '',
     newPassword: '',
@@ -29,7 +28,6 @@ export function useProfileViewModel() {
   });
   const [isChangingPassword, setIsChangingPassword] = useState(false);
 
-  // Deactivate Account State
   const [isDeactivateModalOpen, setIsDeactivateModalOpen] = useState(false);
   const [isDeactivating, setIsDeactivating] = useState(false);
 
@@ -70,7 +68,6 @@ export function useProfileViewModel() {
   const saveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side validations per backend rules in API_CURL.md
     if (formData.phoneNumber && formData.phoneNumber.trim() !== '') {
       const phoneRegex = /^\+?[0-9]{10,15}$/;
       if (!phoneRegex.test(formData.phoneNumber.trim())) {

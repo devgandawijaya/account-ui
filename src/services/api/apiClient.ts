@@ -12,7 +12,6 @@ export class ApiClient {
   private async request<T>(endpoint: string, options: RequestOptions = {}): Promise<ApiResponse<T>> {
     const { body, params, requiresAuth = true, headers: customHeaders, ...restOptions } = options;
 
-    // Build URL with query params
     let url = endpoint;
     if (params) {
       const searchParams = new URLSearchParams();
@@ -27,7 +26,6 @@ export class ApiClient {
       }
     }
 
-    // Prepare headers
     const headers = new Headers(customHeaders);
     headers.set('accept', '*/*');
 
@@ -42,7 +40,6 @@ export class ApiClient {
       }
     }
 
-    // Set timeout with AbortController
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT_MS);
 
@@ -70,7 +67,6 @@ export class ApiClient {
       }
 
       if (!response.ok || !payload.success) {
-        // Handle 401 Unauthorized (expired or invalid token)
         if (response.status === 401) {
           tokenService.clear();
         }

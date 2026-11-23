@@ -28,7 +28,6 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const id = `toast_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     setToasts((prev) => [...prev, { id, type, title, message }]);
 
-    // Auto dismiss after 4 seconds
     setTimeout(() => {
       removeToast(id);
     }, 4000);
@@ -38,8 +37,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     <ToastContext.Provider value={{ showToast, removeToast }}>
       {children}
 
-      {/* Toast Notification Container */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none">
+            <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none">
         {toasts.map((toast) => {
           let icon = <Info className="w-5 h-5 text-blue-600 shrink-0" />;
           let border = 'border-blue-200';

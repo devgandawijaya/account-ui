@@ -20,8 +20,7 @@ export const RolesPermissionsPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div>
+            <div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900">
           Informasi Hak Akses & Peran
         </h1>
@@ -30,8 +29,7 @@ export const RolesPermissionsPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Role Selection Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {roles.map((r) => {
           const isSelected = selectedRoleCode === r.code;
           return (
@@ -61,8 +59,7 @@ export const RolesPermissionsPage: React.FC = () => {
         })}
       </div>
 
-      {/* Selected Role Authority Breakdown */}
-      <Card
+            <Card
         title={`Cakupan Akses: ${currentRole.name}`}
         subtitle="Rincian hak akses dan fitur yang dapat digunakan oleh tingkatan peran ini."
         action={

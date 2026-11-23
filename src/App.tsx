@@ -19,17 +19,14 @@ export const App: React.FC = () => {
       <ToastProvider>
         <AuthProvider>
           <Routes>
-            {/* Root redirect */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                        <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-            {/* Auth Routes */}
-            <Route element={<AuthLayout />}>
+                        <Route element={<AuthLayout />}>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
             </Route>
 
-            {/* Protected Dashboard Routes */}
-            <Route path="/dashboard" element={<MainLayout />}>
+                        <Route path="/dashboard" element={<MainLayout />}>
               <Route index element={<DashboardOverviewPage />} />
               <Route path="users" element={<UsersManagementPage />} />
               <Route path="roles" element={<RolesPermissionsPage />} />
@@ -37,8 +34,7 @@ export const App: React.FC = () => {
               <Route path="settings" element={<SettingsProfilePage />} />
             </Route>
 
-            {/* 404 Fallback */}
-            <Route path="*" element={<NotFoundPage />} />
+                        <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AuthProvider>
       </ToastProvider>

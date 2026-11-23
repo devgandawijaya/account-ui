@@ -1,7 +1,3 @@
-/**
- * Token Storage Service
- * Encapsulates safe persistence of JWT tokens
- */
 const ACCESS_TOKEN_KEY = 'accounthub_access_token';
 const REFRESH_TOKEN_KEY = 'accounthub_refresh_token';
 const SESSION_DATA_KEY = 'accounthub_session_user';

@@ -1,7 +1,3 @@
-/**
- * Authentication Model Types
- * Matching real backend request bodies and responses
- */
 export interface LoginRequest {
   email: string;
   password: string;

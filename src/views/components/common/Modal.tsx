@@ -48,8 +48,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
-      <div
+            <div
         className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in"
         onClick={onClose}
       />
@@ -58,8 +57,7 @@ export const Modal: React.FC<ModalProps> = ({
         <div
           className={`relative bg-white rounded-xl shadow-xl border border-slate-200/90 w-full ${maxWidthClasses[maxWidth]} overflow-hidden animate-in fade-in zoom-in-95 duration-150`}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50">
             <div>
               <h3 className="text-base font-semibold text-slate-900">{title}</h3>
               {description && <p className="text-xs text-slate-500 mt-0.5">{description}</p>}
@@ -72,11 +70,9 @@ export const Modal: React.FC<ModalProps> = ({
             </button>
           </div>
 
-          {/* Body */}
-          <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">{children}</div>
+                    <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">{children}</div>
 
-          {/* Footer */}
-          {footer && (
+                    {footer && (
             <div className="flex items-center justify-end gap-2.5 px-6 py-3.5 bg-slate-50 border-t border-slate-100">
               {footer}
             </div>

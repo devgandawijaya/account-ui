@@ -29,8 +29,7 @@ export const DashboardOverviewPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header section with action buttons */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
             Ringkasan Pengguna & Akun
@@ -60,8 +59,7 @@ export const DashboardOverviewPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Primary KPI Metrics Cards (Real Backend Data) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Total Pengguna"
           value={isLoading ? '...' : metrics.totalProfiles}
@@ -99,10 +97,8 @@ export const DashboardOverviewPage: React.FC = () => {
         />
       </div>
 
-      {/* Middle row: Gender Distribution & Demographics */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Gender Breakdown */}
-        <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div className="lg:col-span-7">
           <Card
             title="Komposisi Jenis Kelamin"
             subtitle="Sebaran jenis kelamin pengguna yang telah melengkapi data profil"
@@ -165,8 +161,7 @@ export const DashboardOverviewPage: React.FC = () => {
           </Card>
         </div>
 
-        {/* Quick Shortcuts */}
-        <div className="lg:col-span-5">
+                <div className="lg:col-span-5">
           <Card title="Akses Cepat" subtitle="Navigasi ke menu utama yang sering digunakan">
             <div className="space-y-2.5">
               <button
@@ -215,8 +210,7 @@ export const DashboardOverviewPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Recent Profiles List */}
-      <Card
+            <Card
         title="Pengguna Baru Bergabung"
         subtitle="Daftar akun yang baru saja terdaftar di platform"
         action={

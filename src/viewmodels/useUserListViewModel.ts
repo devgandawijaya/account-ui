@@ -12,11 +12,10 @@ export function useUserListViewModel() {
 
   const isAdmin = currentUser?.role === 'ROLE_ADMIN';
 
-  // Table Data
   const [rawUsers, setRawUsers] = useState<AdminUserItem[]>([]);
   const [totalElements, setTotalElements] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(0); // 0-based
+  const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [sortBy, setSortBy] = useState('createdAt');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
@@ -26,13 +25,11 @@ export function useUserListViewModel() {
   const [genderFilter, setGenderFilter] = useState('ALL');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Detail Modal
   const [selectedUser, setSelectedUser] = useState<AdminUserItem | null>(null);
   const [selectedUserProfile, setSelectedUserProfile] = useState<UserProfile | null>(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isLoadingDetailProfile, setIsLoadingDetailProfile] = useState(false);
 
-  // Add User Modal
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isAddingUser, setIsAddingUser] = useState(false);
   const [addUserForm, setAddUserForm] = useState<AdminCreateUserRequest>({
@@ -47,7 +44,6 @@ export function useUserListViewModel() {
     dateOfBirth: '',
   });
 
-  // Edit / Update User Modal (Akun + Data Profil Personal)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [editUserForm, setEditUserForm] = useState<{
@@ -78,12 +74,10 @@ export function useUserListViewModel() {
     avatarUrl: '',
   });
 
-  // Delete User Modal
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isDeletingUser, setIsDeletingUser] = useState(false);
   const [userToDelete, setUserToDelete] = useState<AdminUserItem | null>(null);
 
-  // Status Action In-Flight
   const [isTogglingStatusId, setIsTogglingStatusId] = useState<string | null>(null);
 
   const fetchUsers = useCallback(async () => {
@@ -99,7 +93,6 @@ export function useUserListViewModel() {
         isActive: statusFilter === 'ACTIVE' ? true : statusFilter === 'INACTIVE' ? false : undefined,
       };
 
-      // 1. Fetch profiles to merge personal profile data with user accounts
       let profilesMap = new Map<string, UserProfile>();
       try {
         const profRes = await profileService.getProfiles({ page: 0, size: 100 });
@@ -108,14 +101,11 @@ export function useUserListViewModel() {
           if (p.email) profilesMap.set(p.email.toLowerCase(), p);
         });
       } catch {
-        // Continue if profiles cannot be batch fetched
       }
 
       try {
-        // 2. Primary: Fetch /api/v1/users
         const response = await userService.getUsers(params);
 
-        // Merge personal profile data for every user
         const merged: AdminUserItem[] = response.users.map((u) => {
           const prof = profilesMap.get(u.id) || profilesMap.get(u.email.toLowerCase());
           return {
@@ -135,7 +125,6 @@ export function useUserListViewModel() {
         setTotalElements(response.pagination.totalElements);
         setTotalPages(response.pagination.totalPages || 1);
       } catch {
-        // 3. Fallback: If /api/v1/users is restricted, map from /api/v1/profiles directly
         const profResponse = await profileService.getProfiles({
           page: currentPage,
           size: pageSize,
@@ -180,7 +169,6 @@ export function useUserListViewModel() {
     fetchUsers();
   }, [fetchUsers]);
 
-  // Client-side search & filtering across both account data and personal profile data
   const filteredUsers = rawUsers.filter((u) => {
     const q = search.trim().toLowerCase();
     if (q) {
@@ -239,11 +227,9 @@ export function useUserListViewModel() {
     setSortDir('desc');
   };
 
-  // Open & Close View Detail Modal (Menampilkan Data Akun + Data Profil Personal)
   const openDetailModal = async (user: AdminUserItem) => {
     setSelectedUser(user);
 
-    // Langsung buat profile object awal dari data yang sudah dimerge agar Data Profil Personal tidak kosong!
     const initialProfile: UserProfile = {
       id: user.profileId || user.id,
       userId: user.id,
@@ -272,7 +258,6 @@ export function useUserListViewModel() {
         setSelectedUserProfile(fresh);
       }
     } catch {
-      // Pertahankan initialProfile yang sudah diisi dari data gabungan
     } finally {
       setIsLoadingDetailProfile(false);
     }
@@ -284,7 +269,6 @@ export function useUserListViewModel() {
     setIsDetailModalOpen(false);
   };
 
-  // Add User Handlers (POST /api/v1/users)
   const openAddModal = () => {
     setAddUserForm({
       fullName: '',
@@ -353,7 +337,6 @@ export function useUserListViewModel() {
     }
   };
 
-  // Edit / Update User Handlers (PUT /api/v1/users/{userId} & Profil Personal)
   const openEditModal = (user: AdminUserItem) => {
     setEditUserForm({
       id: user.id,
@@ -397,7 +380,6 @@ export function useUserListViewModel() {
 
     setIsEditingUser(true);
     try {
-      // 1. Update akun pengguna di backend
       const accountPayload: AdminUpdateUserRequest = {
         fullName: trimmedName,
         role: editUserForm.role,
@@ -405,7 +387,6 @@ export function useUserListViewModel() {
       };
       await userService.updateUser(editUserForm.id, accountPayload);
 
-      // 2. Pembaruan Data Profil Personal
       const profilePayload: ProfileUpdateRequest = {
         phoneNumber: editUserForm.phoneNumber.trim() || null,
         idCardNumber: editUserForm.idCardNumber.trim() || null,
@@ -426,7 +407,6 @@ export function useUserListViewModel() {
         console.info('Pembaruan data profil spesifik oleh admin:', profErr);
       }
 
-      // Sinkronkan state lokal seketika agar perubahan langsung terlihat di tabel & detail
       setRawUsers((prev) =>
         prev.map((u) => {
           if (u.id === editUserForm.id) {
@@ -460,7 +440,6 @@ export function useUserListViewModel() {
     }
   };
 
-  // Toggle Status (Suspend / Activate) (PATCH /api/v1/users/{userId}/status)
   const handleToggleStatus = async (user: AdminUserItem) => {
     if (user.id === currentUser?.userId || user.email === currentUser?.email) {
       showToast('error', 'Administrator tidak dapat mengubah status aktif akunnya sendiri.');
@@ -486,7 +465,6 @@ export function useUserListViewModel() {
     }
   };
 
-  // Delete User Handlers (DELETE /api/v1/users/{userId})
   const openDeleteModal = (user: AdminUserItem) => {
     if (user.id === currentUser?.userId || user.email === currentUser?.email) {
       showToast('error', 'Administrator tidak dapat menghapus akunnya sendiri.');
@@ -524,7 +502,6 @@ export function useUserListViewModel() {
     }
   };
 
-  // Export CSV
   const handleExportCSV = () => {
     try {
       const csv = userService.exportUsersToCSV(filteredUsers);
@@ -549,7 +526,7 @@ export function useUserListViewModel() {
     rawUsersCount: rawUsers.length,
     totalElements,
     totalPages,
-    currentPage: currentPage + 1, // 1-based for UI pagination
+    currentPage: currentPage + 1,
     pageSize,
     sortBy,
     sortDir,

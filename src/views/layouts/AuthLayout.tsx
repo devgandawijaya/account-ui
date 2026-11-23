@@ -9,10 +9,8 @@ export const AuthLayout: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl w-full mx-auto bg-white rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
-        {/* Left Side: Brand & Feature Value Prop in Blue */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
-          {/* Subtle background grid pattern */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                <div className="lg:col-span-5 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
           <div>
             <div className="flex items-center gap-2.5">
@@ -62,8 +60,7 @@ export const AuthLayout: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side: Form Area */}
-        <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-center bg-white">
+                <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-center bg-white">
           <div className="mb-6 flex justify-end">
             <span className="text-xs text-slate-500">
               {isLoginPage ? 'Belum punya akun?' : 'Sudah memiliki akun?'}

@@ -53,8 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Mobile overlay */}
-      {isOpen && (
+            {isOpen && (
         <div
           className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-xs lg:hidden"
           onClick={onClose}
@@ -66,8 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
+                <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-xs shadow-blue-500/20">
               <Shield className="w-4 h-4" />
@@ -89,8 +87,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Navigation list */}
-        <div className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+                <div className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           <div className="px-3 pb-2 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
             Menu Utama
           </div>
@@ -114,8 +111,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           ))}
         </div>
 
-        {/* Active user preview pill & logout */}
-        {user && (
+                {user && (
           <div className="p-3 border-t border-slate-100 bg-slate-50/60">
             <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 shadow-2xs">
               <div className="flex items-center justify-between">

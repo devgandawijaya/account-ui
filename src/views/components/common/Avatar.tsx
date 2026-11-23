@@ -30,7 +30,6 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   const initials = getInitials(name);
 
-  // Deterministic soft color based on name length
   const colors = [
     'bg-blue-100 text-blue-700 border-blue-200',
     'bg-sky-100 text-sky-700 border-sky-200',

@@ -9,14 +9,12 @@ export function useAuthViewModel() {
   const { showToast } = useToast();
   const navigate = useNavigate();
 
-  // Login form state
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
     rememberMe: true,
   });
 
-  // Register form state
   const [registerForm, setRegisterForm] = useState({
     fullName: '',
     email: '',
@@ -47,7 +45,6 @@ export function useAuthViewModel() {
     if (errorMessage) setErrorMessage(null);
   };
 
-  // Submit Login to Real Backend
   const submitLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
@@ -79,7 +76,6 @@ export function useAuthViewModel() {
     }
   };
 
-  // Submit Register to Real Backend
   const submitRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);

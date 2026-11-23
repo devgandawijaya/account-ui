@@ -13,7 +13,6 @@
   }
 }
 
-/* Custom scrollbar for clean UI */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

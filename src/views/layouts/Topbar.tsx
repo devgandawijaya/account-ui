@@ -25,8 +25,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onMenuClick }) => {
 
   return (
     <header className="h-16 bg-white border-b border-slate-200/90 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
-      {/* Left side: Hamburger & Title */}
-      <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
           className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg lg:hidden"
@@ -47,10 +46,8 @@ export const Topbar: React.FC<TopbarProps> = ({ onMenuClick }) => {
         </div>
       </div>
 
-      {/* Right side: Global search, Notifications, User profile */}
-      <div className="flex items-center gap-2.5">
-        {/* Quick search button */}
-        <button
+            <div className="flex items-center gap-2.5">
+                <button
           onClick={() => navigate('/dashboard/users')}
           className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs text-slate-400 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors"
         >
@@ -58,8 +55,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onMenuClick }) => {
           <span>Cari pengguna...</span>
         </button>
 
-        {/* Notifications */}
-        <div className="relative">
+                <div className="relative">
           <button
             onClick={() => setShowNotificationList(!showNotificationList)}
             className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg relative transition-colors"
@@ -104,8 +100,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onMenuClick }) => {
           )}
         </div>
 
-        {/* User profile menu */}
-        {user && (
+                {user && (
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}

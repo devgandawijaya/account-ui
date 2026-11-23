@@ -1,9 +1,3 @@
-/**
- * Centralized API Configuration
- * Zero hardcoded endpoints.
- * Supports direct cross-origin communication (allowed by Spring Boot backend)
- * or same-origin reverse proxy (Vite & Nginx).
- */
 const rawBaseUrl = import.meta.env.VITE_API_BASE_URL;
 export const API_BASE_URL = typeof rawBaseUrl === 'string' ? rawBaseUrl.replace(/\/+$/, '') : 'http://localhost:8085';
 

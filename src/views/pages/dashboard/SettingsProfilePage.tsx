@@ -67,8 +67,7 @@ export const SettingsProfilePage: React.FC = () => {
 
   return (
     <div className="space-y-6 max-w-4xl pb-10">
-      {/* Header */}
-      <div>
+            <div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900">
           Pengaturan Akun & Profil
         </h1>
@@ -77,8 +76,7 @@ export const SettingsProfilePage: React.FC = () => {
         </p>
       </div>
 
-      {/* Profile Overview Card */}
-      <Card>
+            <Card>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-6 border-b border-slate-100">
           <Avatar
             name={profile?.fullName || user?.fullName || 'Pengguna'}
@@ -103,8 +101,7 @@ export const SettingsProfilePage: React.FC = () => {
           </div>
         </div>
 
-        {/* Profile Update Form */}
-        <form onSubmit={saveProfile} className="mt-6 space-y-4">
+                <form onSubmit={saveProfile} className="mt-6 space-y-4">
           <h3 className="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2">
             Informasi Pribadi & Kontak
           </h3>
@@ -237,8 +234,7 @@ export const SettingsProfilePage: React.FC = () => {
         </form>
       </Card>
 
-      {/* Change Password Card */}
-      <Card>
+            <Card>
         <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
           <div className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
             <KeyRound className="w-5 h-5" />
@@ -328,8 +324,7 @@ export const SettingsProfilePage: React.FC = () => {
         </form>
       </Card>
 
-      {/* Danger Zone: Self-Deactivate Account */}
-      <Card className="border-rose-200 bg-rose-50/20">
+            <Card className="border-rose-200 bg-rose-50/20">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-3">
             <div className="w-9 h-9 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
@@ -356,8 +351,7 @@ export const SettingsProfilePage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Confirmation Modal for Account Deactivation */}
-      <Modal
+            <Modal
         isOpen={isDeactivateModalOpen}
         onClose={closeDeactivateModal}
         title="Konfirmasi Penonaktifan Akun"

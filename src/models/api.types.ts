@@ -1,7 +1,3 @@
-/**
- * Standard Backend Envelope Types
- * Matches Spring Boot ApiResponse structure
- */
 export interface ApiResponse<T = unknown> {
   success: boolean;
   message: string;

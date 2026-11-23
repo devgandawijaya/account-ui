@@ -30,7 +30,6 @@ export function useActivityViewModel() {
       if (isAdmin) {
         const response = await userService.getUsers({ page: 0, size: 50, sortBy: 'createdAt', sortDir: 'desc' });
         response.users.forEach((u) => {
-          // Pendaftaran akun event
           events.push({
             id: `user_reg_${u.id}`,
             actor: u.createdBy || 'Sistem Enterprise',
@@ -41,7 +40,6 @@ export function useActivityViewModel() {
             severity: 'info',
           });
 
-          // Event status akun
           if (!u.isActive) {
             events.push({
               id: `user_status_${u.id}`,
@@ -54,7 +52,6 @@ export function useActivityViewModel() {
             });
           }
 
-          // Pembaruan data jika updatedAt berbeda
           if (u.updatedAt && u.updatedAt !== u.createdAt) {
             events.push({
               id: `user_upd_${u.id}`,
@@ -94,7 +91,6 @@ export function useActivityViewModel() {
         });
       }
 
-      // Urutkan berdasarkan waktu terkini
       events.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
       setActivities(events);
     } catch (e) {
